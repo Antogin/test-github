@@ -1,10 +1,31 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <form v-on:submit.prevent="search">
+      <input v-model="username" type="text" />
+    </form>
   </div>
   <router-view />
 </template>
+
+
+<script>
+export default {
+  data: () => {
+    return { name: "Shawn" };
+  },
+  methods: {
+    search: function () {
+      console.log('search', this.username)
+      this.$router.push(this.username)
+
+    },
+  },
+  mounted: async function () {
+    this.name = "Shawn's Name"; // MAGIC
+  },
+};
+</script>
+
 
 <style>
 #app {
